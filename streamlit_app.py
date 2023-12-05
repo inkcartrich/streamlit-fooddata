@@ -37,7 +37,7 @@ selection = st.selectbox(
 st.divider()
 
 if selection == None:
-    st.text("No product selected.")
+    st.text("")
 else:
     with st.spinner('Getting details on product...'):
 
