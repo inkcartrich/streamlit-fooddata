@@ -44,7 +44,7 @@ st.text(f"Selected brand: {brand_selection}")
 
 product_query = f"""
 SELECT DISTINCT BRAND_NAME from BRANDED_FOOD
-    WHERE BRANDED_FOOD.BRAND_OWNER CONTAINS {brand_selection}
+    WHERE BRANDED_FOOD.BRAND_OWNER CONTAINS '{brand_selection}'
 """
 
 df_products = conn.query(product_query, ttl=600)
