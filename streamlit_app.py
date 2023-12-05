@@ -32,13 +32,17 @@ df_brands = df_selector_raw.drop_duplicates("BRAND_OWNER")
 brand_selection = st.selectbox(
     "Select or search for a brand:",
     df_brands['BRAND_OWNER'],
-    None,
+    "Starbucks Coffee Company",
     format_func=lambda x: capwords(x)
 )
 
+df_brand_products = df_selector_raw[df_selector_raw['BRAND_OWNER'] == brand_selection]
+
+st.text("Found " + str(len(df_brand_products)) + " products.")
+
 product_selection = st.selectbox(
     "Select or search for a product:",
-    df_selector_raw['BRAND_NAME'],
+    df_brand_products,
     None,
     format_func=lambda x: capwords(x)
 )
