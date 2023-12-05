@@ -60,9 +60,9 @@ detail_dict = df_detail.loc[0].to_dict()
 
 st.markdown(f"""
 
-# {detail_dict["BRAND_NAME"]} 
+## {detail_dict["BRAND_NAME"]} 
 
-{detail_dict["BRAND_OWNER"]}
+### {detail_dict["BRAND_OWNER"]}
 
 **Category:** {detail_dict["BRANDED_FOOD_CATEGORY"]} 
 
