@@ -64,7 +64,7 @@ with st.spinner('Wait for it...'):
     st.write("#")
 
     st.image(url,
-            width=150)
+            width=200)
 
     st.markdown(f"""
 
