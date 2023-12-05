@@ -11,8 +11,13 @@ query_brand_name = st.text_input(
     "Cocoa puffs"
 )
 
+query_string = f"""
+SELECT * from BRANDED_FOOD 
+    WHERE BRAND_NAME = UPPER('{query_brand_name}')
+"""
+
 # Perform query.
-#df = conn.query(f'SELECT * from BRANDED_FOOD WHERE BRAND_NAME = "{query_brand_name}";', ttl=600)
+df = conn.query(query_string, ttl=600)
 
 # Print results.
 df
