@@ -26,3 +26,4 @@ df_suggest['concat'] = df_suggest['BRAND_OWNER'] + " - " + df_suggest['BRAND_NAM
 
 st.text("Searching " + str(len(df_suggest)) + " brand-name products.")
 
+selection = st.keyup("Testing")
