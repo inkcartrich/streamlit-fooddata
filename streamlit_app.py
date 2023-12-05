@@ -15,7 +15,7 @@ st.subheader("Explore the USDA FoodData Central dataset!")
 # Brands
 #
 
-selector_query = f"""
+brand_query = f"""
 SELECT DISTINCT BRAND_OWNER from BRANDED_FOOD
     WHERE BRANDED_FOOD.BRAND_OWNER IS NOT NULL AND
     LENGTH(BRANDED_FOOD.BRAND_OWNER) > 0 AND
@@ -25,30 +25,37 @@ SELECT DISTINCT BRAND_OWNER from BRANDED_FOOD
     HAVING COUNT(BRANDED_FOOD.BRAND_NAME) > 1;
 """
 
-df_selector = conn.query(selector_query, ttl=600)
+df_brands = conn.query(brand_query, ttl=600)
 
-st.text("Searching " + str(len(df_selector)) + " products.")
+st.text("Searching " + str(len(df_brands)) + " brands.")
 
-brand_slicer = st.selectbox(
+brand_selection = st.selectbox(
     "Select or search for a brand:",
-    df_selector['BRAND_OWNER'],
+    df_brands['BRAND_OWNER'],
     None,
     format_func=lambda x: capwords(x)
 )
 
-st.text(f"Selected brand: {brand_slicer}")
+st.text(f"Selected brand: {brand_selection}")
 
 #
 # Products
 #
 
-product_slicer = st.selectbox(
+product_query = f"""
+SELECT DISTINCT BRAND_NAME from BRANDED_FOOD
+    WHERE BRANDED_FOOD.BRAND_OWNER CONTAINS {brand_selection}
+"""
+
+df_products = conn.query(brand_query, ttl=600)
+
+product_selection = st.selectbox(
     "Select or search for a brand:",
-    df_selector['BRAND_NAME'],
+    df_products['BRAND_NAME'],
     None,
     format_func=lambda x: capwords(x)
 )
 
-st.text(f"Selected product: {product_slicer}")
+st.text(f"Selected product: {product_selection}")
 
 st.write("#")
