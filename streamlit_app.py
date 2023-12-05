@@ -43,7 +43,6 @@ brand_owner = df_selection['BRAND_OWNER'].iloc[0]
 brand_name = df_selection['BRAND_NAME'].iloc[0]
 image_search_term = brand_owner + " " + brand_name + " product photo"
 url = bing_image_urls(image_search_term, limit=1)
-st.text(url)
 
 detail_query = f"""
 SELECT * FROM BRANDED_FOOD
@@ -63,7 +62,8 @@ df_detail = conn.query(detail_query, ttl=600)
 detail_dict = df_detail.loc[0].to_dict()
 
 st.image(url,
-        caption="Image search provided by Bing.")
+        caption="Image search provided by Bing.",
+        width=50%)
 
 st.markdown(f"""
 ##
