@@ -69,7 +69,7 @@ else:
 
         food_description_query = f"""
         SELECT DESCRIPTION FROM FOOD
-            WHERE FOOD.FDC_ID = $${detail_fdc_id}
+            WHERE FOOD.FDC_ID = $${detail_fdc_id}$$
             LIMIT 1
         """
 
