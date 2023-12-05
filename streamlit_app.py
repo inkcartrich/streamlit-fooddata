@@ -45,6 +45,7 @@ detail_query = f"""
 SELECT * FROM BRANDED_FOOD
     WHERE BRANDED_FOOD.BRAND_OWNER = '{df_selection['BRAND_OWNER']}' AND
     BRANDED_FOOD.BRAND_NAME = '{df_selection['BRAND_NAME']}'
+    LIMIT 10
 """
 
 df_detail = conn.query(detail_query, ttl=600)
