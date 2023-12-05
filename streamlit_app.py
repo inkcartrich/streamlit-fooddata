@@ -76,6 +76,7 @@ Package weight: {detail_dict["PACKAGE_WEIGHT"]}
 Ingredients: {detail_dict["INGREDIENTS"]}
 
 FDC_ID: {detail_dict["FDC_ID"]}
+
 Data provided by {detail_dict["DATA_SOURCE"]} as of {detail_dict["AVAILABLE_DATE"]} (Last modified {detail_dict["MODIFIED_DATE"]})
 
 """
