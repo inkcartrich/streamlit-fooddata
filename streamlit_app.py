@@ -4,6 +4,7 @@ import streamlit as st
 import pandas as pd
 import numpy as pd
 from string import capwords
+from bing_image_urls import bing_image_urls
 
 # Initialize connection.
 conn = st.connection("snowflake")
@@ -41,6 +42,8 @@ df_selection = df_selector[df_selector['concat'] == selection]
 brand_owner = df_selection['BRAND_OWNER'].iloc[0]
 brand_name = df_selection['BRAND_NAME'].iloc[0]
 image_search_term = brand_owner + " " + brand_name
+url = bing_image_urls(image_search_term, limit=1)[0]
+print(url)
 
 detail_query = f"""
 SELECT * FROM BRANDED_FOOD
