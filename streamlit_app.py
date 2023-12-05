@@ -32,7 +32,7 @@ st.text(search_brands)
 
 products_query = f"""
 SELECT DISTINCT BRAND_NAME from BRANDED_FOOD
-    WHERE BRANDED_FOOD.BRAND_OWNER == {search_brands}
+    WHERE BRANDED_FOOD.BRAND_OWNER == '{search_brands}'
 """
 
 df_products = conn.query(products_query, ttl=600)
