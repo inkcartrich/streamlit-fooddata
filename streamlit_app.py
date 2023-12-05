@@ -27,6 +27,8 @@ df_selector_raw = conn.query(selector_query, ttl=600)
 
 st.text("Searching " + str(len(df_selector_raw)) + " brand-name products.")
 
+df_brands = df_selector_raw.drop_duplicates("BRAND_OWNER")
+
 brand_selection = st.selectbox(
     "Select or search for a brand:",
     df_selector_raw['BRAND_OWNER'],
@@ -35,7 +37,7 @@ brand_selection = st.selectbox(
 )
 
 product_selection = st.selectbox(
-    "Select or search for a brand:",
+    "Select or search for a product:",
     df_selector_raw['BRAND_NAME'],
     None,
     format_func=lambda x: capwords(x)
