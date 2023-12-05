@@ -44,14 +44,14 @@ query_brand_name = st.text_input(
     "Cocoa puffs"
 )
 
-query_string = f"""
+query_detailed_string = f"""
 SELECT * from BRANDED_FOOD 
-    WHERE BRAND_NAME = UPPER('{query_brand_name}')
+    WHERE BRAND_NAME = UPPER('{df_selection[BRAND_NAME]}')
     LIMIT 100;
 """
 
 # Perform query.
-df_raw = conn.query(query_string, ttl=600)
+df_raw = conn.query(query_detailed_string, ttl=600)
 
 df_display = df_raw[['BRAND_OWNER', 'BRAND_NAME', 'GTIN_UPC', 'INGREDIENTS']]
 
