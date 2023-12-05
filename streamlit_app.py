@@ -30,7 +30,7 @@ df_selector = conn.query(selector_query, ttl=600)
 
 st.text("Searching " + str(len(df_selector)) + " brand-name products.")
 
-df_selector['concat'] = df_selector['BRAND_OWNER'] + ' - ' + df_selector['BRAND_NAME'] + ' (' + df_selector['BRANDED_FOOD_CATEGORY'] + ')'
+df_selector['concat'] = df_selector['BRAND_OWNER'] + ' - ' + df_selector['BRAND_NAME'] 
 
 brand_selection = st.selectbox(
     "Select or search for a product:",
