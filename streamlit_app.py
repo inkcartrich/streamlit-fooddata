@@ -62,11 +62,20 @@ st.dataframe(df_detail)
 
 detail_dict = df_detail.loc[0].to_dict()
 
-st.write(detail_dict)
-
 st.markdown(f"""
 
     FDC_ID: {detail_dict["FDC_ID"]}
 
+    BRAND: {detail_dict["BRAND_OWNER"]}
+
+    PRODUCT: {detail_dict["BRAND_NAME"]}
+
+    INGREDIENTS: {detail_dict["INGREDIENTS"]}
+
+    SERVING SIZE: {detail_dict["SERVING_SIZE"]} {detail_dict["SERVING_SIZE_UNIT"]}
+
+    PACKAGE WEIGHT: {detail_dict["PACKAGE_WEIGHT"]}
+
+    Data provided by {detail_dict["DATA_SOURCE"]} as of {detail_dict["MODIFIED_DATE"]}
 """
 )
