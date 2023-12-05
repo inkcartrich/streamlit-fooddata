@@ -23,7 +23,7 @@ SELECT DISTINCT BRAND_OWNER, BRAND_PRODUCT from BRANDED_FOOD
     LENGTH(BRANDED_FOOD.BRAND_NAME) > 1
 """
 
-df_selector_raw = conn.query(brand_query, ttl=600)
+df_selector_raw = conn.query(selector_query, ttl=600)
 
 st.text("Searching " + str(len(df_selector_raw)) + " brand-name products.")
 
