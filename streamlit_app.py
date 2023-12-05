@@ -42,8 +42,9 @@ st.write("Brand Owner: " + selection_owner)
 st.write("Product: " + selection_product)
 
 query_detailed_string = f"""
-SELECT * from BRANDED_FOOD 
-    WHERE BRAND_NAME = UPPER('{selection_product}')
+SELECT DISTINCT * from BRANDED_FOOD 
+    WHERE 
+        BRAND_OWNER = '{selection_owner}' AND BRAND_NAME = UPPER('{selection_product}')
     LIMIT 100;
 """
 
