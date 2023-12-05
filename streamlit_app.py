@@ -67,16 +67,6 @@ else:
 
         detail_fdc_id = detail_dict["FDC_ID"]
 
-        food_description_query = f"""
-        SELECT DESCRIPTION FROM FOOD
-            WHERE FOOD.FDC_ID = $${detail_fdc_id}$$
-            LIMIT 1
-        """
-
-        df_description = conn.query(food_description_query, ttl=600)
-        description_dict = df_description.loc[0].to_dict()
-
-
         st.image(url)
 
         st.markdown(f"""
@@ -93,7 +83,7 @@ else:
 
         ##
 
-        {description_dict["DESCRIPTION"]}
+        {detail_dict["SHORT_DESCRIPTION"]}
 
         **Ingredients:** {detail_dict["INGREDIENTS"]}
 
