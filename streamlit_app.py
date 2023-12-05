@@ -41,3 +41,13 @@ selection = st.selectbox(
 df_selection = df_selector[df_selector['concat'] == selection]
 
 st.dataframe(df_selection)
+
+detail_query = f"""
+SELECT * FROM BRANDED_FOOD
+    WHERE BRANDED_FOOD.BRAND_OWNER = "{df_selection['BRAND_OWNER'].tostring()}" AND
+    BRANDED_FOOD.BRAND_NAME = "{df_selection['BRAND_NAME'].tostring()}"
+"""
+
+df_detail = conn.query(detail_query, ttl=600)
+
+st.dataframe(df_detail)
