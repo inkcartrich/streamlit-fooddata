@@ -22,7 +22,8 @@ st.dataframe(df_suggest,
 
 search_brand_name = st.selectbox(
     "Select or search for a brand name",
-    df_suggest[['BRAND_NAME']]
+    df_suggest[['BRAND_NAME']],
+    format_func=lambda x: x.title()
 )
 
 #Search bar for brand-name foods
