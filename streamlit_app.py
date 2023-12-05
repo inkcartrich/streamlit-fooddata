@@ -35,12 +35,15 @@ st.text("Selected product:")
 
 df_selection = df_suggest[df_suggest['concat'] == search_brand_name][['BRAND_OWNER', 'BRAND_NAME']]
 
-st.write("Owner: " + df_selection[['BRAND_OWNER']].iloc[0].to_string(index=False))
-st.write("Brand: " + df_selection[['BRAND_NAME']].iloc[0].to_string(index=False))
+selection_owner = df_selection[['BRAND_OWNER']].iloc[0].to_string(index=False)
+selection_product = df_selection[['BRAND_NAME']].iloc[0].to_string(index=False)
+
+st.write("Brand Owner: " + selection_owner)
+st.write("Product: " + selection_product)
 
 query_detailed_string = f"""
 SELECT * from BRANDED_FOOD 
-    WHERE BRAND_NAME = UPPER('{df_selection[['BRAND_NAME']]}')
+    WHERE BRAND_NAME = UPPER('{selection_product}')
     LIMIT 100;
 """
 
