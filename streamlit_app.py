@@ -29,7 +29,7 @@ search_brand_name = st.selectbox(
     "Select or search for a brand name",
     df_suggest['concat'],
     None,
-    format_func=lambda x: x.capwords()
+    format_func=lambda x: x.string.capwords()
 )
 
 st.text("Selected product:")
