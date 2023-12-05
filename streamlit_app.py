@@ -4,6 +4,9 @@ import streamlit as st
 import pandas as pd
 import numpy as pd
 from string import capwords
+from google_images_search import GoogleImagesSearch
+
+gis = GoogleImagesSearch(st.secrets["GCS_DEVELOPER_KEY"], st.secrets["GCS_CX"])
 
 # Initialize connection.
 conn = st.connection("snowflake")
@@ -40,6 +43,7 @@ df_selection = df_selector[df_selector['concat'] == selection]
 
 brand_owner = df_selection['BRAND_OWNER'].iloc[0]
 brand_name = df_selection['BRAND_NAME'].iloc[0]
+image_search_term = brand_owner + " " + brand_name
 
 detail_query = f"""
 SELECT * FROM BRANDED_FOOD
@@ -57,6 +61,25 @@ SELECT * FROM BRANDED_FOOD
 df_detail = conn.query(detail_query, ttl=600)
 
 detail_dict = df_detail.loc[0].to_dict()
+
+# define search params
+# option for commonly used search param are shown below for easy reference.
+# For param marked with '##':
+#   - Multiselect is currently not feasible. Choose ONE option only
+#   - This param can also be omitted from _search_params if you do not wish to define any value
+_search_params = {
+    'q': 'image_search_term,
+    'num': 1,
+    'fileType': 'jpg|gif|png',
+    'rights': 'cc_publicdomain|cc_attribute|cc_sharealike|cc_noncommercial|cc_nonderived',
+    'imgType': 'photo',
+    'imgSize': 'small',
+}
+
+# this will only search for images:
+image_url = gis.search(search_params=_search_params)
+
+st.write(image_url)
 
 st.markdown(f"""
 ##
