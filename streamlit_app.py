@@ -35,58 +35,60 @@ selection = st.selectbox(
     format_func=lambda x: capwords(x)
 )
 
-df_selection = df_selector[df_selector['concat'] == selection]
+with st.spinner('Wait for it...'):
 
-brand_owner = df_selection['BRAND_OWNER'].iloc[0]
-brand_name = df_selection['BRAND_NAME'].iloc[0]
-image_search_term = brand_owner + " " + brand_name + " product photo"
-url = bing_image_urls(image_search_term, limit=1)
+    df_selection = df_selector[df_selector['concat'] == selection]
 
-detail_query = f"""
-SELECT * FROM BRANDED_FOOD
-    WHERE BRANDED_FOOD.BRAND_OWNER = $${brand_owner}$$ AND
-    BRANDED_FOOD.BRAND_NAME = $${brand_name}$$ AND
-    INGREDIENTS IS NOT NULL AND
-    GTIN_UPC IS NOT NULL AND
-    SERVING_SIZE IS NOT NULL AND
-    SERVING_SIZE_UNIT IS NOT NULL AND
-    BRANDED_FOOD_CATEGORY IS NOT NULL AND
-    PACKAGE_WEIGHT IS NOT NULL
-    LIMIT 1
-"""
+    brand_owner = df_selection['BRAND_OWNER'].iloc[0]
+    brand_name = df_selection['BRAND_NAME'].iloc[0]
+    image_search_term = brand_owner + " " + brand_name + " product photo"
+    url = bing_image_urls(image_search_term, limit=1)
 
-df_detail = conn.query(detail_query, ttl=600)
+    detail_query = f"""
+    SELECT * FROM BRANDED_FOOD
+        WHERE BRANDED_FOOD.BRAND_OWNER = $${brand_owner}$$ AND
+        BRANDED_FOOD.BRAND_NAME = $${brand_name}$$ AND
+        INGREDIENTS IS NOT NULL AND
+        GTIN_UPC IS NOT NULL AND
+        SERVING_SIZE IS NOT NULL AND
+        SERVING_SIZE_UNIT IS NOT NULL AND
+        BRANDED_FOOD_CATEGORY IS NOT NULL AND
+        PACKAGE_WEIGHT IS NOT NULL
+        LIMIT 1
+    """
 
-detail_dict = df_detail.loc[0].to_dict()
+    df_detail = conn.query(detail_query, ttl=600)
 
-st.write("#")
+    detail_dict = df_detail.loc[0].to_dict()
 
-st.image(url,
-        width=150)
+    st.write("#")
 
-st.markdown(f"""
+    st.image(url,
+            width=150)
 
-## {detail_dict["BRAND_NAME"]} 
+    st.markdown(f"""
 
-{detail_dict["BRAND_OWNER"]}
+    ## {detail_dict["BRAND_NAME"]} 
 
-**Category:** {detail_dict["BRANDED_FOOD_CATEGORY"]} 
+    {detail_dict["BRAND_OWNER"]}
 
-**Serving size:** {detail_dict["SERVING_SIZE"]} {detail_dict["SERVING_SIZE_UNIT"]} 
+    **Category:** {detail_dict["BRANDED_FOOD_CATEGORY"]} 
 
-**Package weight:** {detail_dict["PACKAGE_WEIGHT"]}
+    **Serving size:** {detail_dict["SERVING_SIZE"]} {detail_dict["SERVING_SIZE_UNIT"]} 
 
-##
+    **Package weight:** {detail_dict["PACKAGE_WEIGHT"]}
 
-{detail_dict["SHORT_DESCRIPTION"]}
+    ##
 
-**Ingredients:** {detail_dict["INGREDIENTS"]}
+    {detail_dict["SHORT_DESCRIPTION"]}
 
-##
+    **Ingredients:** {detail_dict["INGREDIENTS"]}
 
-**FDC_ID:** {detail_dict["FDC_ID"]}
+    ##
 
-Data provided by {detail_dict["DATA_SOURCE"]} as of {detail_dict["AVAILABLE_DATE"]} (Last modified {detail_dict["MODIFIED_DATE"]})
+    **FDC_ID:** {detail_dict["FDC_ID"]}
 
-"""
-)
+    Data provided by {detail_dict["DATA_SOURCE"]} as of {detail_dict["AVAILABLE_DATE"]} (Last modified {detail_dict["MODIFIED_DATE"]})
+
+    """
+    )
