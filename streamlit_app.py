@@ -27,8 +27,6 @@ df_brand = conn.query(brand_query, ttl=600)
 
 st.text("Searching " + str(len(df_brand)) + " brands.")
 
-st.dataframe(df_brand)
-
 brand_slicer = st.selectbox(
     "Select or search for a brand:",
     df_brand['BRAND_OWNER'],
