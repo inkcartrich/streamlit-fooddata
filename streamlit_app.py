@@ -41,7 +41,7 @@ df_selection = df_selector[df_selector['concat'] == selection]
 
 brand_owner = df_selection['BRAND_OWNER'].iloc[0]
 brand_name = df_selection['BRAND_NAME'].iloc[0]
-image_search_term = brand_owner + " " + brand_name
+image_search_term = brand_owner + " " + brand_name + " product photo"
 url = bing_image_urls(image_search_term, limit=1)
 st.text(url)
 
