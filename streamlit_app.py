@@ -77,9 +77,9 @@ _search_params = {
 }
 
 # this will only search for images:
-gis.search(search_params=_search_params)
+image_url = gis.search(search_params=_search_params)
 
-#st.text(image_url)
+print(image_url)
 
 st.markdown(f"""
 ##
