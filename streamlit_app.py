@@ -62,7 +62,7 @@ st.markdown(f"""
 
 # {detail_dict["BRAND_NAME"]} 
 
-### {detail_dict["BRAND_OWNER"]}
+{detail_dict["BRAND_OWNER"]}
 
 **Category:** {detail_dict["BRANDED_FOOD_CATEGORY"]} 
 
@@ -70,9 +70,12 @@ st.markdown(f"""
 
 **Package weight:** {detail_dict["PACKAGE_WEIGHT"]}
 
-*{detail_dict["SHORT_DESCRIPTION"]}*
+
+{detail_dict["SHORT_DESCRIPTION"]}
 
 **Ingredients:** {detail_dict["INGREDIENTS"]}
+
+
 
 **FDC_ID:** {detail_dict["FDC_ID"]}
 
