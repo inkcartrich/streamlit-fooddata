@@ -32,7 +32,10 @@ search_brand_name = st.selectbox(
 )
 
 st.text("Selected product:")
-st.dataframe(df_suggest[df_suggest['concat'] == search_brand_name][['BRAND_OWNER', 'BRAND_NAME']],
+
+df_selection = df_suggest[df_suggest['concat'] == search_brand_name][['BRAND_OWNER', 'BRAND_NAME']]
+
+st.dataframe(df_selection,
             hide_index = True)
 
 #Search bar for brand-name foods
