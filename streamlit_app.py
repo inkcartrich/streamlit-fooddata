@@ -12,7 +12,7 @@ query_brand_name = st.text_input(
 )
 
 # Perform query.
-df = conn.query(f"SELECT * from BRANDED_FOOD WHERE BRAND_NAME = {query_brand_name};", ttl=600)
+df = conn.query(f'SELECT * from BRANDED_FOOD WHERE BRAND_NAME = "{query_brand_name}";', ttl=600)
 
 # Print results.
 df
