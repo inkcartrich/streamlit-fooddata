@@ -14,7 +14,6 @@ st.subheader("Explore the USDA FoodData Central dataset!")
 suggestions_query = f"""
 SELECT DISTINCT BRAND_OWNER, BRAND_NAME from BRANDED_FOOD
     WHERE BRANDED_FOOD.BRAND_NAME IS NOT NULL AND LENGTH(BRANDED_FOOD.BRAND_NAME) > 0
-    LIMIT 100;
 """
 
 df_suggest = conn.query(suggestions_query, ttl=600)
