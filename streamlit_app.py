@@ -42,8 +42,8 @@ df_selection = df_selector[df_selector['concat'] == selection]
 
 st.dataframe(df_selection)
 
-brand_owner = df_selection['BRAND_OWNER'].iloc[0].tostring()
-brand_name = df_selection['BRAND_NAME'].iloc[0].tostring()
+brand_owner = df_selection['BRAND_OWNER'].iloc[0]
+brand_name = df_selection['BRAND_NAME'].iloc[0]
 
 st.write(brand_owner)
 st.write(brand_name)
