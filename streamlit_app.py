@@ -22,7 +22,7 @@ SELECT DISTINCT BRAND_OWNER, BRAND_NAME from BRANDED_FOOD
 
 df_suggest = conn.query(suggestions_query, ttl=600)
 
-df_suggest['concat'] = df_suggest['BRAND_OWNER'] + " - " + df_suggest['BRAND_NAME'] + " - " + df_suggest['BRANDED_FOOD_CATEGORY']
+df_suggest['concat'] = df_suggest['BRAND_OWNER'] + " - " + df_suggest['BRAND_NAME']
 
 st.text("Searching " + str(len(df_suggest)) + " brand-name products.")
 
