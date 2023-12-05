@@ -18,8 +18,9 @@ st.subheader("Explore the USDA FoodData Central dataset!")
 brand_query = f"""
 SELECT DISTINCT BRAND_OWNER from BRANDED_FOOD
     WHERE BRANDED_FOOD.BRAND_OWNER IS NOT NULL AND
-    LENGTH(BRANDED_FOOD.BRAND_OWNER) > 0 AND
-    COUNT(BRANDED_FOOD.BRAND_NAME) > 1
+    LENGTH(BRANDED_FOOD.BRAND_OWNER) > 0 
+    GROUP BY BRAND_OWNER
+    HAVING COUNT(BRANDED_FOOD.BRAND_NAME) > 1
 """
 
 df_brand = conn.query(brand_query, ttl=600)
