@@ -41,7 +41,7 @@ with st.spinner('Wait for it...'):
 
     brand_owner = df_selection['BRAND_OWNER'].iloc[0]
     brand_name = df_selection['BRAND_NAME'].iloc[0]
-    image_search_term = brand_name + " product photo"
+    image_search_term = brand_name + " product photo transparent"
     url = bing_image_urls(image_search_term, limit=1)
 
     detail_query = f"""
