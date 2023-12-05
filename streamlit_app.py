@@ -62,10 +62,9 @@ df_detail = conn.query(detail_query, ttl=600)
 detail_dict = df_detail.loc[0].to_dict()
 
 st.image(url,
-        width=50)
+        width=150)
 
 st.markdown(f"""
-##
 
 ## {detail_dict["BRAND_NAME"]} 
 
