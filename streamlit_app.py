@@ -19,6 +19,8 @@ SELECT DISTINCT BRAND_OWNER from BRANDED_FOOD
 
 df_brands = conn.query(brands_query, ttl=600)
 
+st.text("Searching " + str(len(df_brands)) + " brands.")
+
 search_brands = st.selectbox(
     "Select or search for a brand name",
     df_brands,
