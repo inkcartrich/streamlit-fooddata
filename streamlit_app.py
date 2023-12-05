@@ -65,8 +65,6 @@ else:
 
         detail_dict = df_detail.loc[0].to_dict()
 
-        st.write("#")
-
         st.image(url)
 
         st.markdown(f"""
