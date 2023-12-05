@@ -2,7 +2,7 @@
 
 import streamlit as st
 import pandas as pd
-import string
+from string import capwords
 
 # Initialize connection.
 conn = st.connection("snowflake")
