@@ -27,6 +27,7 @@ df_selector = conn.query(selector_query, ttl=600)
 df_selector['concat'] = df_selector['BRAND_OWNER'] + ' - ' + df_selector['BRAND_NAME'] 
 
 selection = st.selectbox(
+    label=""
     df_selector['concat'],
     None,
     format_func=lambda x: capwords(x),
