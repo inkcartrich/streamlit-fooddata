@@ -7,9 +7,11 @@ conn = st.connection("snowflake")
 
 st.title("USDA FoodData Central")
 
+st.subheader("Explore the USDA FoodData Central dataset!")
+
 suggestions_query = f"""
 SELECT BRAND_OWNER, BRAND_NAME from BRANDED_FOOD
-    WHERE BRAND_NAME IS NOT NULL
+    WHERE BRANDED_FOOD.BRAND_NAME IS NOT NULL
     LIMIT 100;
 """
 
