@@ -8,8 +8,6 @@ from google_images_search import GoogleImagesSearch
 
 gis = GoogleImagesSearch(st.secrets["GCS_DEVELOPER_KEY"], st.secrets["GCS_CX"])
 
-st.text(gis)
-
 # Initialize connection.
 conn = st.connection("snowflake")
 
@@ -79,9 +77,9 @@ _search_params = {
 }
 
 # this will only search for images:
-image_url = gis.search(search_params=_search_params)
+gis.search(search_params=_search_params)
 
-st.text(image_url)
+#st.text(image_url)
 
 st.markdown(f"""
 ##
