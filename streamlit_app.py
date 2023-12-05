@@ -32,7 +32,7 @@ df_brands = df_selector_raw.drop_duplicates("BRAND_OWNER")
 brand_selection = st.selectbox(
     "Select or search for a brand:",
     df_brands['BRAND_OWNER'],
-    "Starbucks Coffee Company",
+    None,
     format_func=lambda x: capwords(x)
 )
 
