@@ -5,6 +5,14 @@ import streamlit as st
 # Initialize connection.
 conn = st.connection("snowflake")
 
+suggestions_query = f"""
+SELECT BRAND_OWNER, BRAND_NAME from BRANDED_FOOD
+    WHERE BRAND_NAME IS NOT NULL
+    LIMIT 100;
+"""
+
+df_suggest = conn.query(suggestions_query, ttl=600)
+
 #Search bar for brand-name foods
 query_brand_name = st.text_input(
     "Search for a brand name",
