@@ -36,7 +36,6 @@ selection = st.selectbox(
 st.divider()
 
 if selection == None:
-    st.text("Select or search for a product above!")
 else:
     with st.spinner('Getting details on product...'):
 
