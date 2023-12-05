@@ -44,8 +44,8 @@ st.dataframe(df_selection)
 
 detail_query = f"""
 SELECT * FROM BRANDED_FOOD
-    WHERE BRANDED_FOOD.BRAND_OWNER = '{df_selection['BRAND_OWNER'].tostring()}' AND
-    BRANDED_FOOD.BRAND_NAME = '{df_selection['BRAND_NAME'].tostring()}'
+    WHERE BRANDED_FOOD.BRAND_OWNER = "{df_selection[['BRAND_OWNER']][0].tostring()}" AND
+    BRANDED_FOOD.BRAND_NAME = "{df_selection[['BRAND_NAME']][0].tostring()}"
 """
 
 df_detail = conn.query(detail_query, ttl=600)
