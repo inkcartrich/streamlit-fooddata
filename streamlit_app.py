@@ -70,12 +70,13 @@ st.markdown(f"""
 
 **Package weight:** {detail_dict["PACKAGE_WEIGHT"]}
 
+#
 
 {detail_dict["SHORT_DESCRIPTION"]}
 
 **Ingredients:** {detail_dict["INGREDIENTS"]}
 
-
+#
 
 **FDC_ID:** {detail_dict["FDC_ID"]}
 
