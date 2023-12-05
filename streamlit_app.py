@@ -30,6 +30,9 @@ search_brand_name = st.selectbox(
     format_func=lambda x: x.title()
 )
 
+st.dataframe(search_brand_name,
+            hide_index = True)
+
 #Search bar for brand-name foods
 query_brand_name = st.text_input(
     "TO BE DROPPED - Search for a brand name",
