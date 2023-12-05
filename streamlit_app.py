@@ -63,7 +63,8 @@ with st.spinner('Wait for it...'):
 
     st.write("#")
 
-    st.image(url)
+    st.image(url,
+            caption="Image search provided by Microsoft Bing")
 
     st.markdown(f"""
 
