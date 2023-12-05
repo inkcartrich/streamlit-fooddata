@@ -68,7 +68,7 @@ detail_dict = df_detail.loc[0].to_dict()
 #   - Multiselect is currently not feasible. Choose ONE option only
 #   - This param can also be omitted from _search_params if you do not wish to define any value
 _search_params = {
-    'q': 'image_search_term,
+    'q': image_search_term,
     'num': 1,
     'fileType': 'jpg|gif|png',
     'rights': 'cc_publicdomain|cc_attribute|cc_sharealike|cc_noncommercial|cc_nonderived',
