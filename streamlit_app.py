@@ -20,6 +20,11 @@ df_suggest = conn.query(suggestions_query, ttl=600)
 st.dataframe(df_suggest,
             hide_index = True)
 
+search_brand_name = st.selectbox(
+    "Search for a brand name",
+    df_suggest
+)
+
 #Search bar for brand-name foods
 query_brand_name = st.text_input(
     "Search for a brand name",
