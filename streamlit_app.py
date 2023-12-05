@@ -36,62 +36,62 @@ selection = st.selectbox(
 st.divider()
 
 if selection == None:
-        st.text("Select or search for a product above!")
-    else:
-        with st.spinner('Getting details on product...'):
+    st.text("Select or search for a product above!")
+else:
+    with st.spinner('Getting details on product...'):
 
-            df_selection = df_selector[df_selector['concat'] == selection]
+        df_selection = df_selector[df_selector['concat'] == selection]
 
-            brand_owner = df_selection['BRAND_OWNER'].iloc[0]
-            brand_name = df_selection['BRAND_NAME'].iloc[0]
-            image_search_term = brand_name + " product photo transparent"
-            url = bing_image_urls(image_search_term, limit=1)
+        brand_owner = df_selection['BRAND_OWNER'].iloc[0]
+        brand_name = df_selection['BRAND_NAME'].iloc[0]
+        image_search_term = brand_name + " product photo transparent"
+        url = bing_image_urls(image_search_term, limit=1)
 
-            detail_query = f"""
-            SELECT * FROM BRANDED_FOOD
-                WHERE BRANDED_FOOD.BRAND_OWNER = $${brand_owner}$$ AND
-                BRANDED_FOOD.BRAND_NAME = $${brand_name}$$ AND
-                INGREDIENTS IS NOT NULL AND
-                GTIN_UPC IS NOT NULL AND
-                SERVING_SIZE IS NOT NULL AND
-                SERVING_SIZE_UNIT IS NOT NULL AND
-                BRANDED_FOOD_CATEGORY IS NOT NULL AND
-                PACKAGE_WEIGHT IS NOT NULL
-                LIMIT 1
-            """
+        detail_query = f"""
+        SELECT * FROM BRANDED_FOOD
+            WHERE BRANDED_FOOD.BRAND_OWNER = $${brand_owner}$$ AND
+            BRANDED_FOOD.BRAND_NAME = $${brand_name}$$ AND
+            INGREDIENTS IS NOT NULL AND
+            GTIN_UPC IS NOT NULL AND
+            SERVING_SIZE IS NOT NULL AND
+            SERVING_SIZE_UNIT IS NOT NULL AND
+            BRANDED_FOOD_CATEGORY IS NOT NULL AND
+            PACKAGE_WEIGHT IS NOT NULL
+            LIMIT 1
+        """
 
-            df_detail = conn.query(detail_query, ttl=600)
+        df_detail = conn.query(detail_query, ttl=600)
 
-            detail_dict = df_detail.loc[0].to_dict()
+        detail_dict = df_detail.loc[0].to_dict()
 
-            st.write("#")
+        st.write("#")
 
-            st.image(url,
-                    caption="Image search provided by Microsoft Bing")
+        st.image(url,
+                caption="Image search provided by Microsoft Bing")
 
-            st.markdown(f"""
+        st.markdown(f"""
 
-            ## {detail_dict["BRAND_NAME"]} 
+        ## {detail_dict["BRAND_NAME"]} 
 
-            {detail_dict["BRAND_OWNER"]}
+        {detail_dict["BRAND_OWNER"]}
 
-            **Category:** {detail_dict["BRANDED_FOOD_CATEGORY"]} 
+        **Category:** {detail_dict["BRANDED_FOOD_CATEGORY"]} 
 
-            **Serving size:** {detail_dict["SERVING_SIZE"]} {detail_dict["SERVING_SIZE_UNIT"]} 
+        **Serving size:** {detail_dict["SERVING_SIZE"]} {detail_dict["SERVING_SIZE_UNIT"]} 
 
-            **Package weight:** {detail_dict["PACKAGE_WEIGHT"]}
+        **Package weight:** {detail_dict["PACKAGE_WEIGHT"]}
 
-            ##
+        ##
 
-            {detail_dict["SHORT_DESCRIPTION"]}
+        {detail_dict["SHORT_DESCRIPTION"]}
 
-            **Ingredients:** {detail_dict["INGREDIENTS"]}
+        **Ingredients:** {detail_dict["INGREDIENTS"]}
 
-            ##
+        ##
 
-            **FDC_ID:** {detail_dict["FDC_ID"]}
+        **FDC_ID:** {detail_dict["FDC_ID"]}
 
-            Data provided by {detail_dict["DATA_SOURCE"]} as of {detail_dict["AVAILABLE_DATE"]} (Last modified {detail_dict["MODIFIED_DATE"]})
+        Data provided by {detail_dict["DATA_SOURCE"]} as of {detail_dict["AVAILABLE_DATE"]} (Last modified {detail_dict["MODIFIED_DATE"]})
 
-            """
-            )
+        """
+        )
