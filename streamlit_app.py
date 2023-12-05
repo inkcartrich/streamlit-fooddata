@@ -74,7 +74,7 @@ else:
         """
 
         df_description = conn.query(food_description_query, ttl=600)
-        desc_dict = df_description.loc[0].to_dict()
+        description_dict = df_description.loc[0].to_dict()
 
 
         st.image(url)
@@ -93,7 +93,7 @@ else:
 
         ##
 
-        {df_description["DESCRIPTION"]}
+        {description_dict["DESCRIPTION"]}
 
         **Ingredients:** {detail_dict["INGREDIENTS"]}
 
