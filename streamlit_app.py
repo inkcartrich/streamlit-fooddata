@@ -28,7 +28,7 @@ SELECT DISTINCT BRAND_OWNER, BRAND_NAME, BRANDED_FOOD_CATEGORY from BRANDED_FOOD
 
 df_selector = conn.query(selector_query, ttl=600)
 
-st.text("Searching " + str(len(df_selector_raw)) + " brand-name products.")
+st.text("Searching " + str(len(df_selector)) + " brand-name products.")
 
 df_select['concat'] = df_selector['BRAND_OWNER'] + ' - ' + df_selector['BRAND_NAME']
 
