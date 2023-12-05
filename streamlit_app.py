@@ -31,7 +31,7 @@ st.dataframe(df_brand)
 
 brand_slicer = st.selectbox(
     "Select or search for a brand:",
-    df_brand['BRAND_NAME'],
+    df_brand['BRAND_OWNER'],
     None,
     format_func=lambda x: capwords(x)
 )
