@@ -58,6 +58,21 @@ SELECT * FROM BRANDED_FOOD
 
 df_detail = conn.query(detail_query, ttl=600)
 
-st.text("Found " + str(len(df_detail)) + " sufficient records.")
-
 st.dataframe(df_detail)
+
+detail_owner = df_selection['BRAND_OWNER'].iloc[0]
+detail_product = df_selection['BRAND_NAME'].iloc[0]
+detail_ingredients = df_selection['INGREDIENTS'].iloc[0]
+detail_serving_size = df_selection['SERVING_SIZE'].iloc[0]
+detail_serving_size_unit = df_selection['SERVING_SIZE_UNIT'].iloc[0]
+detail_branded_food_category = df_selection['BRANDED_FOOD_CATEGORY'].iloc[0]
+detail_package_weight = df_selection['PACKAGE_WEIGHT'].iloc[0]
+detail_short_description = df_selection['SHORT_DESCRIPTION'].iloc[0]
+
+st.markdown(f"""
+
+##{detail_owner}
+#{detail_product}
+
+"""
+)
