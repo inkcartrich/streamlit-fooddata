@@ -49,8 +49,10 @@ SELECT DISTINCT BRAND_NAME from BRANDED_FOOD
 
 df_products = conn.query(product_query, ttl=600)
 
+st.text("Found " + str(len(df_products)) + " products.")
+
 product_selection = st.selectbox(
-    "Select or search for a brand:",
+    "Select or search for a product:",
     df_products['BRAND_NAME'],
     None,
     format_func=lambda x: capwords(x)
