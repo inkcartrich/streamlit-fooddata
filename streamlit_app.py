@@ -17,7 +17,15 @@ st.subheader("Explore the USDA FoodData Central dataset!")
 #
 
 selector_query = f"""
-SELECT DISTINCT BRAND_OWNER, BRAND_NAME from BRANDED_FOOD
+SELECT DISTINCT BRAND_OWNER, 
+        BRAND_NAME,
+        INGREDIENTS,
+        SERVING_SIZE,
+        SERVING_SIZE_UNIT,
+        BRANDED_FOOD_CATEGORY,
+        PACKAGE_WEIGHT,
+        AVAILABLE_DATE
+    FROM BRANDED_FOOD
     WHERE BRANDED_FOOD.BRAND_OWNER IS NOT NULL AND
     LENGTH(BRANDED_FOOD.BRAND_OWNER) > 0 AND
     BRANDED_FOOD.BRAND_NAME IS NOT NULL AND
@@ -40,14 +48,3 @@ selection = st.selectbox(
 df_selection = df_selector[df_selector['concat'] == selection]
 
 st.dataframe(df_selection)
-
-detail_query = f"""
-SELECT * FROM BRANDED_FOOD
-    WHERE BRANDED_FOOD.BRAND_OWNER = '{df_selection['BRAND_OWNER']}' AND
-    BRANDED_FOOD.BRAND_NAME = '{df_selection['BRAND_NAME']}'
-    LIMIT 10
-"""
-
-df_detail = conn.query(detail_query, ttl=600)
-
-st.dataframe(df_detail)
