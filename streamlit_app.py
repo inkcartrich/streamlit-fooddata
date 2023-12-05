@@ -47,7 +47,7 @@ SELECT DISTINCT BRAND_NAME from BRANDED_FOOD
     WHERE BRANDED_FOOD.BRAND_OWNER CONTAINS {brand_selection}
 """
 
-df_products = conn.query(brand_query, ttl=600)
+df_products = conn.query(product_query, ttl=600)
 
 product_selection = st.selectbox(
     "Select or search for a brand:",
