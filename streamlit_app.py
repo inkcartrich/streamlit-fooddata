@@ -5,6 +5,8 @@ import streamlit as st
 # Initialize connection.
 conn = st.connection("snowflake")
 
+st.title("USDA FoodData Central")
+
 suggestions_query = f"""
 SELECT BRAND_OWNER, BRAND_NAME from BRANDED_FOOD
     WHERE BRAND_NAME IS NOT NULL
