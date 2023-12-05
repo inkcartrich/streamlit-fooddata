@@ -38,6 +38,8 @@ df_selection = df_suggest[df_suggest['concat'] == search_brand_name][['BRAND_OWN
 st.dataframe(df_selection,
             hide_index = True)
 
+st.write(df_selection[['BRAND_NAME']])
+
 query_detailed_string = f"""
 SELECT * from BRANDED_FOOD 
     WHERE BRAND_NAME = UPPER('{df_selection[['BRAND_NAME']]}')
