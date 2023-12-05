@@ -11,6 +11,21 @@ st.title("USDA FoodData Central")
 
 st.subheader("Explore the USDA FoodData Central dataset!")
 
+brands_query = f"""
+SELECT DISTINCT BRAND_OWNER from BRANDED_FOOD
+    WHERE BRANDED_FOOD.BRAND_OWNER IS NOT NULL AND
+    LENGTH(BRANDED_FOOD.BRAND_OWNER) > 0 
+"""
+
+df_brands = conn.query(brands_query, ttl=600)
+
+search_brands = st.selectbox(
+    "Select or search for a brand name",
+    df_brands,
+    None,
+    format_func=lambda x: capwords(x)
+)
+
 suggestions_query = f"""
 SELECT DISTINCT BRAND_OWNER, BRAND_NAME from BRANDED_FOOD
     WHERE BRANDED_FOOD.BRAND_OWNER IS NOT NULL AND
