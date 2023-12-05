@@ -16,16 +16,16 @@ SELECT DISTINCT BRAND_OWNER, BRAND_NAME from BRANDED_FOOD
     LIMIT 100;
 """
 
-df_suggest_raw = conn.query(suggestions_query, ttl=600)
+df_suggest = conn.query(suggestions_query, ttl=600)
 
-df_suggest_concat = df_suggest_raw['BRAND_OWNER'] + " - " + df_suggest_raw['BRAND_NAME']
+df_suggest['concat'] = df_suggest['BRAND_OWNER'] + " - " + df_suggest['BRAND_NAME']
 
-st.dataframe(df_suggest_concat,
+st.dataframe(df_suggest,
             hide_index = True)
 
 search_brand_name = st.selectbox(
     "Select or search for a brand name",
-    df_suggest_concat,
+    df_suggest['concat'],
     None,
     format_func=lambda x: x.title()
 )
