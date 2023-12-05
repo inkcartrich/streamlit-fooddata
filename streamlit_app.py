@@ -9,7 +9,7 @@ from bing_image_urls import bing_image_urls
 # Initialize connection.
 conn = st.connection("snowflake")
 
-st.title("USDA-FDC Explorer")
+st.title("🍔 USDA-FDC Explorer")
 st.write("Query the USDA Fooddata Central dataset! This webapp is served on Streamlit Community Cloud and uses a Snowflake backend. The USDA-FDC dataset is available at https://fdc.nal.usda.gov/.")
 st.caption("Tracking 1,947,155 records across 36,967 brands. USDA-FDC contains many duplicate vendors and products. For best results, search for popular brand name products.")
 
