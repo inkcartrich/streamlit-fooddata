@@ -42,10 +42,16 @@ df_selection = df_selector[df_selector['concat'] == selection]
 
 st.dataframe(df_selection)
 
+brand_owner = df_selection[['BRAND_OWNER']][0].tostring()
+brand_name = df_selection[['BRAND_NAME']][0].tostring()
+
+st.write(brand_owner)
+st.write(brand_name)
+
 detail_query = f"""
 SELECT * FROM BRANDED_FOOD
-    WHERE BRANDED_FOOD.BRAND_OWNER = "{df_selection[['BRAND_OWNER']][0].tostring()}" AND
-    BRANDED_FOOD.BRAND_NAME = "{df_selection[['BRAND_NAME']][0].tostring()}"
+    WHERE BRANDED_FOOD.BRAND_OWNER = "{brand_owner}" AND
+    BRANDED_FOOD.BRAND_NAME = "{brand_name}"
 """
 
 df_detail = conn.query(detail_query, ttl=600)
