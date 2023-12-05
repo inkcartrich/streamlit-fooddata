@@ -50,8 +50,8 @@ st.write(brand_name)
 
 detail_query = f"""
 SELECT * FROM BRANDED_FOOD
-    WHERE BRANDED_FOOD.BRAND_OWNER = ${brand_owner} AND
-    BRANDED_FOOD.BRAND_NAME = ${brand_name}
+    WHERE BRANDED_FOOD.BRAND_OWNER = $${brand_owner}$$ AND
+    BRANDED_FOOD.BRAND_NAME = $${brand_name}$$
 """
 
 df_detail = conn.query(detail_query, ttl=600)
