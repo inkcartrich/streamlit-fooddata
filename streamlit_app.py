@@ -70,12 +70,16 @@ st.markdown(f"""
 
     PRODUCT: {detail_dict["BRAND_NAME"]}
 
+    DESCRIPTION (IF AVAILABLE): {detail_dict["SHORT_DESCRIPTION"]}
+
+    CATEGORY: {detail_dict["BRANDED_FOOD_CATEGORY"]}
+
     INGREDIENTS: {detail_dict["INGREDIENTS"]}
 
     SERVING SIZE: {detail_dict["SERVING_SIZE"]} {detail_dict["SERVING_SIZE_UNIT"]}
 
     PACKAGE WEIGHT: {detail_dict["PACKAGE_WEIGHT"]}
 
-    Data provided by {detail_dict["DATA_SOURCE"]} as of {detail_dict["MODIFIED_DATE"]}
+    Data provided by {detail_dict["DATA_SOURCE"]} as of {detail_dict["AVAILABLE_DATE"]} (Last modified {detail_dict["MODIFIED_DATE"]})
 """
 )
