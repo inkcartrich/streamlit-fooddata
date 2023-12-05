@@ -14,7 +14,7 @@ query_brand_name = st.text_input(
 query_string = f"""
 SELECT * from BRANDED_FOOD 
     WHERE BRAND_NAME = UPPER('{query_brand_name}'
-    LIMIT 100)
+    LIMIT 100;
 """
 
 # Perform query.
