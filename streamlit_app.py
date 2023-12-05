@@ -67,8 +67,7 @@ else:
 
         st.write("#")
 
-        st.image(url,
-                caption="Image search provided by Microsoft Bing")
+        st.image(url)
 
         st.markdown(f"""
 
