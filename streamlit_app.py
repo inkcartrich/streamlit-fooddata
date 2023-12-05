@@ -60,20 +60,18 @@ detail_dict = df_detail.loc[0].to_dict()
 
 st.markdown(f"""
 
-# {detail_dict["BRAND_NAME"]}
+# {detail_dict["BRAND_NAME"]} \
 {detail_dict["BRAND_OWNER"]}
 
-Category: {detail_dict["BRANDED_FOOD_CATEGORY"]}
+**Category:** {detail_dict["BRANDED_FOOD_CATEGORY"]} \
+**Serving size:** {detail_dict["SERVING_SIZE"]} {detail_dict["SERVING_SIZE_UNIT"]} \
+**Package weight:** {detail_dict["PACKAGE_WEIGHT"]}
 
 {detail_dict["SHORT_DESCRIPTION"]}
 
-Serving size: {detail_dict["SERVING_SIZE"]} {detail_dict["SERVING_SIZE_UNIT"]}
+**Ingredients:** {detail_dict["INGREDIENTS"]}
 
-Package weight: {detail_dict["PACKAGE_WEIGHT"]}
-
-Ingredients: {detail_dict["INGREDIENTS"]}
-
-FDC_ID: {detail_dict["FDC_ID"]}
+**FDC_ID:** {detail_dict["FDC_ID"]}
 
 Data provided by {detail_dict["DATA_SOURCE"]} as of {detail_dict["AVAILABLE_DATE"]} (Last modified {detail_dict["MODIFIED_DATE"]})
 
