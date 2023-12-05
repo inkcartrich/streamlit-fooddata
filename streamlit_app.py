@@ -15,6 +15,9 @@ SELECT BRAND_OWNER, BRAND_NAME from BRANDED_FOOD
 
 df_suggest = conn.query(suggestions_query, ttl=600)
 
+st.dataframe(df_suggest,
+            hide_index = True)
+
 #Search bar for brand-name foods
 query_brand_name = st.text_input(
     "Search for a brand name",
