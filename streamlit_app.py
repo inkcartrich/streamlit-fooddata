@@ -33,6 +33,8 @@ search_brand_name = st.selectbox(
     format_func=lambda x: capwords(x)
 )
 
+st.write("#")
+
 st.text("Selected product:")
 
 df_selection = df_suggest[df_suggest['concat'] == search_brand_name][['BRAND_OWNER', 'BRAND_NAME']]
