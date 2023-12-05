@@ -28,6 +28,15 @@ search_brands = st.selectbox(
     format_func=lambda x: capwords(x)
 )
 
+products_query = f"""
+SELECT DISTINCT BRAND_NAME from BRANDED_FOOD
+    WHERE BRANDED_FOOD.BRAND_OWNER == {search_brands}
+"""
+
+df_products = conn.query(products_query, ttl=600)
+
+st.text("Found " + str(len(df_products)) + " products.")
+
 suggestions_query = f"""
 SELECT DISTINCT BRAND_OWNER, BRAND_NAME from BRANDED_FOOD
     WHERE BRANDED_FOOD.BRAND_OWNER IS NOT NULL AND
