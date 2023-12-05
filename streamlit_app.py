@@ -13,8 +13,6 @@ st.title("USDA-FDC Explorer")
 st.write("Query the USDA Fooddata Central dataset! This webapp is served on Streamlit Community Cloud and uses a Snowflake backend. The USDA-FDC dataset is available at https://fdc.nal.usda.gov/.")
 st.caption("Tracking 1,947,155 records across 36,967 brands. USDA-FDC contains many duplicate vendors. For best results, search for popular brand name products.")
 
-st.write("#")
-
 selector_query = f"""
 SELECT DISTINCT BRAND_OWNER, BRAND_NAME
     FROM BRANDED_FOOD
