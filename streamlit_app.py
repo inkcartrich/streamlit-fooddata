@@ -11,6 +11,9 @@ conn = st.connection("snowflake")
 
 st.title("USDA-FDC Explorer")
 st.write("Query the USDA Fooddata Central dataset! This webapp is served on Streamlit Community Cloud and uses a Snowflake backend. The USDA-FDC dataset is available at https://fdc.nal.usda.gov/.")
+
+st.write("#")
+
 st.text("Tracking 1,947,155 records across 36,967 brands.")
 
 #
@@ -60,6 +63,8 @@ SELECT * FROM BRANDED_FOOD
 df_detail = conn.query(detail_query, ttl=600)
 
 detail_dict = df_detail.loc[0].to_dict()
+
+st.write("#")
 
 st.image(url,
         width=150)
