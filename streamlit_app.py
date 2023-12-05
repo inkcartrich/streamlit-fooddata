@@ -18,7 +18,7 @@ SELECT DISTINCT BRAND_OWNER, BRAND_NAME from BRANDED_FOOD
 
 df_suggest_raw = conn.query(suggestions_query, ttl=600)
 
-st.dataframe(df_suggest,
+st.dataframe(df_suggest_raw,
             hide_index = True)
 
 search_brand_name = st.selectbox(
