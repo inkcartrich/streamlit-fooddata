@@ -29,7 +29,7 @@ st.text("Searching " + str(len(df_brand)) + " brands.")
 
 brand_slicer = st.selectbox(
     "Select or search for a brand:",
-    df_brand['concat'],
+    df_brand['BRAND_NAME'],
     None,
     format_func=lambda x: capwords(x)
 )
