@@ -8,9 +8,8 @@ from string import capwords
 # Initialize connection.
 conn = st.connection("snowflake")
 
-st.title("Fooddata Explorer")
-
-st.subheader("Query the USDA Fooddata Central dataset!")
+st.title("USDA-FDC Explorer")
+st.text("Query the USDA Fooddata Central dataset! This webapp is served on Streamlit Community Cloud and uses a Snowflake backend.")
 st.text("Searching 1,947,155 records across 36,967 brands.")
 
 #
@@ -27,8 +26,6 @@ SELECT DISTINCT BRAND_OWNER, BRAND_NAME
 """
 
 df_selector = conn.query(selector_query, ttl=600)
-
-st.text("Searching " + str(len(df_selector)) + " brand-name products.")
 
 df_selector['concat'] = df_selector['BRAND_OWNER'] + ' - ' + df_selector['BRAND_NAME'] 
 
