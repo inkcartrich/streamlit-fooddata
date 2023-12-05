@@ -60,7 +60,7 @@ df_detail = conn.query(detail_query, ttl=600)
 
 st.dataframe(df_detail)
 
-detail_list = df_detail.loc[0].values.flatten().tolist()
+detail_list = df_detail.loc[0].to_dict()
 
 st.write(detail_list)
 
