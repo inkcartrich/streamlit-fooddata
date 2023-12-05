@@ -1,6 +1,7 @@
 # streamlit_app.py
 
 import streamlit as st
+import pandas as pd
 
 # Initialize connection.
 conn = st.connection("snowflake")
@@ -15,14 +16,14 @@ SELECT DISTINCT BRAND_OWNER, BRAND_NAME from BRANDED_FOOD
     LIMIT 100;
 """
 
-df_suggest = conn.query(suggestions_query, ttl=600)
+df_suggest_raw = conn.query(suggestions_query, ttl=600)
 
 st.dataframe(df_suggest,
             hide_index = True)
 
 search_brand_name = st.selectbox(
     "Select or search for a brand name",
-    df_suggest[['BRAND_NAME']],
+    df_suggest_raw[['BRAND_NAME']],
     None,
     format_func=lambda x: x.title()
 )
