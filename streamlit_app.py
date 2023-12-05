@@ -34,26 +34,32 @@ brand_slicer = st.selectbox(
     format_func=lambda x: capwords(x)
 )
 
+st.text(f"Selected brand: {brand_slicer}")
+
 st.write("#")
 
 #
 # Products
 #
 
-df_products = conn.query(brand_query, ttl=600)
+product_query = f"""
+SELECT DISTINCT BRAND_NAME from BRANDED_FOOD
+    WHERE BRANDED_FOOD.BRAND_OWNER = '{brand_slicer}' AND
+    BRANDED_FOOD.BRAND_NAME IS NOT NULL AND
+    LENGTH(BRANDED_FOOD.BRAND_NAME) > 1
+"""
 
-st.text("Searching " + str(len(df_brand)) + " brands.")
+df_products = conn.query(product_query, ttl=600)
 
-brand_slicer = st.selectbox(
+st.text("Found " + str(len(df_brand)) + " products.")
+
+product_slicer = st.selectbox(
     "Select or search for a brand:",
-    df_brand['BRAND_OWNER'],
+    df_products['BRAND_NAME'],
     None,
     format_func=lambda x: capwords(x)
 )
 
+st.text(f"Selected product: {product_slicer}")
+
 st.write("#")
-
-#
-# Old
-#
-
