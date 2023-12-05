@@ -54,5 +54,5 @@ df_raw = conn.query(query_detailed_string, ttl=600)
 df_display = df_raw[['BRAND_OWNER', 'BRAND_NAME', 'GTIN_UPC', 'INGREDIENTS']]
 
 # Print results.
-st.dataframe(df_display,
+st.dataframe(df_raw,
             hide_index=True)
