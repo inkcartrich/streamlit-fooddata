@@ -58,8 +58,6 @@ SELECT * FROM BRANDED_FOOD
 
 df_detail = conn.query(detail_query, ttl=600)
 
-st.dataframe(df_detail)
-
 detail_dict = df_detail.loc[0].to_dict()
 
 st.markdown(f"""
