@@ -20,4 +20,4 @@ SELECT * from BRANDED_FOOD
 df = conn.query(query_string, ttl=600)
 
 # Print results.
-df
+st.dataframe(df)
