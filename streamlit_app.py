@@ -2,6 +2,7 @@
 
 import streamlit as st
 import pandas as pd
+import string
 
 # Initialize connection.
 conn = st.connection("snowflake")
@@ -28,7 +29,7 @@ search_brand_name = st.selectbox(
     "Select or search for a brand name",
     df_suggest['concat'],
     None,
-    format_func=lambda x: x.capitalize()
+    format_func=lambda x: x.capwords()
 )
 
 st.text("Selected product:")
