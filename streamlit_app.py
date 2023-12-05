@@ -8,7 +8,10 @@ from string import capwords
 # Initialize connection.
 conn = st.connection("snowflake")
 
-st.title("USDA FoodData Central")
+st.title("Fooddata Explorer")
+
+st.subheader("Query the USDA Fooddata Central dataset!")
+st.text("Searching 1,947,155 records across 36,967 brands.")
 
 #
 # Brands
