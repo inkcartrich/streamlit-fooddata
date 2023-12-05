@@ -46,7 +46,7 @@ query_brand_name = st.text_input(
 
 query_detailed_string = f"""
 SELECT * from BRANDED_FOOD 
-    WHERE BRAND_NAME = UPPER('{df_selection[BRAND_NAME]}')
+    WHERE BRAND_NAME = UPPER('{df_selection[['BRAND_NAME']]}')
     LIMIT 100;
 """
 
