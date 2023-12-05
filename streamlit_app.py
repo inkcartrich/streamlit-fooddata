@@ -29,7 +29,7 @@ df_selector['concat'] = df_selector['BRAND_OWNER'] + ' - ' + df_selector['BRAND_
 selection = st.selectbox(
     df_selector['concat'],
     None,
-    format_func=lambda x: capwords(x)
+    format_func=lambda x: capwords(x),
     placeholder="Select or search for a product..."
 )
 
