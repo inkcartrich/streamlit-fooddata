@@ -25,7 +25,7 @@ st.dataframe(df_suggest_concat,
 
 search_brand_name = st.selectbox(
     "Select or search for a brand name",
-    df_suggest_raw[['BRAND_NAME']],
+    df_suggest_concat,
     None,
     format_func=lambda x: x.title()
 )
