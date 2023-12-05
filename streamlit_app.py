@@ -68,6 +68,6 @@ def dataframe_with_selections(df):
     return selected_rows.drop('Select', axis=1)
 
 
-selection = dataframe_with_selections(product_selection)
+selection = dataframe_with_selections(df_brand_products)
 st.write("Your selection:")
 st.write(selection)
