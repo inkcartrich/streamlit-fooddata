@@ -9,7 +9,7 @@ from string import capwords
 conn = st.connection("snowflake")
 
 st.title("USDA-FDC Explorer")
-st.write("Query the USDA Fooddata Central dataset! This webapp is served on Streamlit Community Cloud and uses a Snowflake backend. USDA-FDC is available at (https://fdc.nal.usda.gov/)")
+st.write("Query the USDA Fooddata Central dataset! This webapp is served on Streamlit Community Cloud and uses a Snowflake backend. USDA-FDC is available at https://fdc.nal.usda.gov/")
 st.text("Searching 1,947,155 records across 36,967 brands.")
 
 #
