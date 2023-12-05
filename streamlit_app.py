@@ -35,10 +35,8 @@ st.text("Selected product:")
 
 df_selection = df_suggest[df_suggest['concat'] == search_brand_name][['BRAND_OWNER', 'BRAND_NAME']]
 
-st.dataframe(df_selection,
-            hide_index = True)
-
-st.write(df_selection[['BRAND_NAME']].iloc[0].to_string(index=False))
+st.write("Owner: " + df_selection[['BRAND_OWNER']].iloc[0].to_string(index=False))
+st.write("Brand: " + df_selection[['BRAND_NAME']].iloc[0].to_string(index=False))
 
 query_detailed_string = f"""
 SELECT * from BRANDED_FOOD 
