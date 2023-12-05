@@ -12,7 +12,7 @@ st.title("USDA FoodData Central")
 st.subheader("Explore the USDA FoodData Central dataset!")
 
 suggestions_query = f"""
-SELECT DISTINCT BRAND_OWNER, BRAND_NAME from BRANDED_FOOD
+SELECT DISTINCT BRAND_OWNER, BRAND_NAME, BRANDED_FOOD_CATEGORY from BRANDED_FOOD
     WHERE BRANDED_FOOD.BRAND_OWNER IS NOT NULL AND
     LENGTH(BRANDED_FOOD.BRAND_OWNER) AND 
     BRANDED_FOOD.BRAND_NAME IS NOT NULL AND 
@@ -22,7 +22,7 @@ SELECT DISTINCT BRAND_OWNER, BRAND_NAME from BRANDED_FOOD
 
 df_suggest = conn.query(suggestions_query, ttl=600)
 
-df_suggest['concat'] = df_suggest['BRAND_OWNER'] + " - " + df_suggest['BRAND_NAME']
+df_suggest['concat'] = df_suggest['BRAND_OWNER'] + " - " + df_suggest['BRAND_NAME'] + " - " df_suggest['BRANDED_FOOD_CATEGORY']
 
 st.text("Searching " + str(len(df_suggest)) + " brand-name products.")
 
