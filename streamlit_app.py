@@ -45,9 +45,8 @@ st.text(f"Selected brand: {brand_selection}")
 product_query = f"""
 SELECT DISTINCT BRAND_NAME from BRANDED_FOOD
     WHERE BRANDED_FOOD.BRAND_OWNER LIKE ANY '{brand_selection}' AND
-    BRAND_NAME IS NOT NULL AND
-    BRANDED_FOOD.BRAND_OWNER != BRAND_NAME
-    LENGTH(BRAND_NAME) > 0
+    BRANDED_FOOD.BRAND_NAME IS NOT NULL AND
+    LENGTH(BRANDED_FOOD.BRAND_NAME) > 1
 """
 
 df_products = conn.query(product_query, ttl=600)
