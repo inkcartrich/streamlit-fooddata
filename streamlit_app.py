@@ -13,11 +13,14 @@ query_brand_name = st.text_input(
 
 query_string = f"""
 SELECT * from BRANDED_FOOD 
-    WHERE BRAND_NAME = UPPER('{query_brand_name}')
+    WHERE BRAND_NAME = UPPER('{query_brand_name}'
+    LIMIT 100)
 """
 
 # Perform query.
-df = conn.query(query_string, ttl=600)
+df_raw = conn.query(query_string, ttl=600)
+
+df_display = df_raw
 
 # Print results.
-st.dataframe(df)
+st.dataframe(df_display)
