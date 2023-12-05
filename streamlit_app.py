@@ -14,7 +14,7 @@ st.write("Query the USDA Fooddata Central dataset! This webapp is served on Stre
 st.caption("Tracking 1,947,155 records across 36,967 brands. USDA-FDC contains many duplicate vendors. For best results, search for popular brand name products.")
 
 selector_query = f"""
-SELECT DISTINCT BRAND_OWNER, BRAND_NAME, BRANDED_PRODUCT_CATEGORY
+SELECT DISTINCT BRAND_OWNER, BRAND_NAME, BRANDED_FOOD_CATEGORY
     FROM BRANDED_FOOD
     WHERE BRANDED_FOOD.BRAND_OWNER IS NOT NULL AND
     LENGTH(BRANDED_FOOD.BRAND_OWNER) > 0 AND
@@ -24,7 +24,7 @@ SELECT DISTINCT BRAND_OWNER, BRAND_NAME, BRANDED_PRODUCT_CATEGORY
 
 df_selector = conn.query(selector_query, ttl=600)
 
-df_selector['concat'] = df_selector['BRAND_OWNER'] + ' - ' + df_selector['BRAND_NAME'] + " - " + df_selector['BRANDED_PRODUCT_CATEGORY']
+df_selector['concat'] = df_selector['BRAND_OWNER'] + ' - ' + df_selector['BRAND_NAME'] + " - " + df_selector['BRANDED_FOOD_CATEGORY']
 
 selection = st.selectbox(
     label="",
