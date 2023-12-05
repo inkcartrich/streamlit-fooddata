@@ -10,7 +10,7 @@ st.title("USDA FoodData Central")
 st.subheader("Explore the USDA FoodData Central dataset!")
 
 suggestions_query = f"""
-SELECT BRAND_OWNER, BRAND_NAME from BRANDED_FOOD
+SELECT DISTINCT BRAND_OWNER, BRAND_NAME from BRANDED_FOOD
     WHERE BRANDED_FOOD.BRAND_NAME IS NOT NULL
     LIMIT 100;
 """
