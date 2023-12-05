@@ -20,6 +20,7 @@ df_suggest = conn.query(suggestions_query, ttl=600)
 
 df_suggest['concat'] = df_suggest['BRAND_OWNER'] + " - " + df_suggest['BRAND_NAME']
 
+st.text("Suggestions preview:")
 st.dataframe(df_suggest,
             hide_index = True)
 
@@ -30,6 +31,7 @@ search_brand_name = st.selectbox(
     format_func=lambda x: x.title()
 )
 
+st.text("Selected product:")
 st.dataframe(df_suggest[df_suggest['concat'] == search_brand_name][['BRAND_OWNER', 'BRAND_NAME']],
             hide_index = True)
 
