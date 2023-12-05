@@ -42,7 +42,7 @@ st.text("Found " + str(len(df_brand_products)) + " products.")
 
 product_selection = st.selectbox(
     "Select or search for a product:",
-    df_brand_products,
+    df_brand_products['BRAND_NAME'],
     None,
     format_func=lambda x: capwords(x)
 )
