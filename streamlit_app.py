@@ -62,8 +62,7 @@ df_detail = conn.query(detail_query, ttl=600)
 detail_dict = df_detail.loc[0].to_dict()
 
 st.image(url,
-        caption="Image search provided by Bing.",
-        width=50)
+        caption="Image search provided by Bing.")
 
 st.markdown(f"""
 ##
