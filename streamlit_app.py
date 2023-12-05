@@ -18,7 +18,7 @@ SELECT DISTINCT BRAND_OWNER, BRAND_NAME from BRANDED_FOOD
 
 df_suggest_raw = conn.query(suggestions_query, ttl=600)
 
-df_suggest_concat = df_suggest_raw['BRAND_OWNER'] + " - " df_suggest_raw['BRAND_NAME'].title()
+df_suggest_concat = df_suggest_raw['BRAND_OWNER'] + " - " + df_suggest_raw['BRAND_NAME'].title()
 
 st.dataframe(df_suggest_concat,
             hide_index = True)
