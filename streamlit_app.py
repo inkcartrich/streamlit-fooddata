@@ -62,11 +62,11 @@ st.dataframe(df_detail)
 
 detail_dict = df_detail.loc[0].to_dict()
 
-st.write(detail_list)
+st.write(detail_dict)
 
 st.markdown(f"""
 
     FDC_ID: {detail_dict["FDC_ID"]}
-    
+
 """
 )
