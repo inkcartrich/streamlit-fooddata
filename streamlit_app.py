@@ -24,7 +24,7 @@ df_suggest = conn.query(suggestions_query, ttl=600)
 
 df_suggest['concat'] = df_suggest['BRAND_OWNER'] + " - " + df_suggest['BRAND_NAME']
 
-st.text("Searching " + len(df_suggest) + " records")
+st.text("Searching " + len(df_suggest).to_string() + " brand-name products.")
 
 search_brand_name = st.selectbox(
     "Select or search for a brand name",
