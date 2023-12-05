@@ -26,8 +26,6 @@ df_suggest['concat'] = df_suggest['BRAND_OWNER'] + " - " + df_suggest['BRAND_NAM
 
 st.text("Searching " + str(len(df_suggest)) + " brand-name products.")
 
-value = st_keyup("Enter a value", key="0")
-
 st.write("#")
 
 search_brand_name = st.selectbox(
