@@ -51,9 +51,17 @@ st.write(brand_name)
 detail_query = f"""
 SELECT * FROM BRANDED_FOOD
     WHERE BRANDED_FOOD.BRAND_OWNER = $${brand_owner}$$ AND
-    BRANDED_FOOD.BRAND_NAME = $${brand_name}$$
+    BRANDED_FOOD.BRAND_NAME = $${brand_name}$$ AND
+    INGEDIENTS IS NOT NULL AND
+    GTIN_UPC IS NOT NULL
+    SERVING_SIZE IS NOT NULL AND
+    SERVING_SIZE_UNIT IS NOT NULL AND
+    BRANDED_FOOD_CATEGORY IS NOT NULL AND
+    PACKAGE_WEIGHT IS NOT NULL
 """
 
 df_detail = conn.query(detail_query, ttl=600)
+
+st.text("Found " + str(len(df_detail)) + " sufficient records.")
 
 st.dataframe(df_detail)
