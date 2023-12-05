@@ -28,7 +28,7 @@ search_brand_name = st.selectbox(
 
 #Search bar for brand-name foods
 query_brand_name = st.text_input(
-    "Search for a brand name",
+    "TO BE DROPPED - Search for a brand name",
     "Cocoa puffs"
 )
 
