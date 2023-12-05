@@ -7,7 +7,7 @@ conn = st.connection("snowflake")
 
 #Search bar for brand-name foods
 query_brand_name = st.text_input(
-    "Search for a food product",
+    "Search for a brand name",
     "Cocoa puffs"
 )
 
